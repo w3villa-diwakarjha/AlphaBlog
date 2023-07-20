@@ -41,6 +41,13 @@ html,body{
 #sticky-footer{
     flex-shrink: none;
 }
+
+.background-black{
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border: none;
+}
 /**************** Pagination Style ***********************/
 .flickr_pagination {
     text-align: center;

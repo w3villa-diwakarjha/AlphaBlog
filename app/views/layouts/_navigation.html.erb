@@ -14,7 +14,28 @@
       </li>   
       <li class="nav-item">
         <%= link_to "Bloggers", users_path, class: "nav-link"%>
-      </li>      
+      </li> 
+      <%if logged_in? %>
+        <li class="nav-item">
+        
+          <%= "Admin" if current_user.admin? %> <%=link_to current_user.username, user_path(current_user), class: "nav-link"%>
+        </li>  
+        <li class="nav-item">
+          <%= button_to "logout", logout_path, :confirm => "Are you sure?", :method => :delete, class: "nav-link background-black"%>
+        </li>  
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "login", login_path, class: "nav-link"%>
+        </li> 
+        <li class="nav-item">
+        <%= link_to "signup", signup_path, class: "nav-link"%>
+      </li> 
+      <% end %>
+      <li class="nav-item">
+        <% if current_user %>
+          <%= button_to "Delete Profile", user_path(current_user), :confirm => "Are you sure?", :method => :delete, class: "nav-link background-black"%>
+        <% end %>      
+      </li>  
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -22,3 +43,4 @@
     </form>
   </div>
 </nav>
+
