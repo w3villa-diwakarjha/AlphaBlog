@@ -17,9 +17,11 @@
       </li> 
       <%if logged_in? %>
         <li class="nav-item">
-        
-          <%= "Admin" if current_user.admin? %> <%=link_to current_user.username, user_path(current_user), class: "nav-link"%>
+          <%if current_user.admin? %> 
+            <span class="nav-link">[Admin]</span>
+          <% end %>
         </li>  
+        <%= link_to current_user.username, user_path(current_user), class: "nav-link"%>
         <li class="nav-item">
           <%= button_to "logout", logout_path, :confirm => "Are you sure?", :method => :delete, class: "nav-link background-black"%>
         </li>  
