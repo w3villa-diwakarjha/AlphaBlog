@@ -52,7 +52,6 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-        byebug
         if current_user != @article.user && !current_user.admin?
             flash[:alert]="You can only edit or Delete own Article"
             redirect_to @article
